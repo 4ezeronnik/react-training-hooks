@@ -1,17 +1,14 @@
 import Navigation from "./Navigation/Navigation";
-import { useState } from 'react';
-import { helpers } from '../helpers/helpers';
+import { useContext } from 'react';
+import { navigationContext } from "./NavigationContext/NavigationContext";
 
 export const App = () => {
-  const [component, setComponent] = useState(() => helpers.home);
-
-  const handlerTumbler = (component) => {
-    setComponent(component);
-  }
+  const navigation = useContext(navigationContext);
+  const { component } = navigation;
 
   return (
     <div>
-      <Navigation handleChange={handlerTumbler}/>
+      <Navigation />
       {component}
     </div>
   );
