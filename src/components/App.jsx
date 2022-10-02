@@ -1,16 +1,18 @@
+import Navigation from "./Navigation/Navigation";
+import { useState } from 'react';
+import { helpers } from '../helpers/helpers';
+
 export const App = () => {
+  const [component, setComponent] = useState(() => helpers.home);
+
+  const handlerTumbler = (component) => {
+    setComponent(component);
+  }
+
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
+    <div>
+      <Navigation handleChange={handlerTumbler}/>
+      {component}
     </div>
   );
 };
